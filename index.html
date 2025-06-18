@@ -6,6 +6,13 @@
     <title>Kode: Creative Creative Studio</title>
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700|Montserrat:700|Poppins:400,700&display=swap" rel="stylesheet">
     <style>
+        html, body {
+            width: 100vw;
+            max-width: 100vw;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        *, *:before, *:after { box-sizing: inherit; }
         :root {
             --bg-light: #f6fafd;
             --bg-dark: #1e2b39;
@@ -21,13 +28,6 @@
             --font-light: #fff;
             --tech-green: #5be9b9;
             --tech-cyan: #36e1ff;
-        }
-        html {
-            box-sizing: border-box;
-            font-size: 16px;
-        }
-        *, *:before, *:after {
-            box-sizing: inherit;
         }
         body {
             margin: 0;
@@ -82,7 +82,6 @@
             0% { transform: scale(1) translateY(0);}
             100% { transform: scale(1.08) translateY(-30px);}
         }
-
         header {
             background: var(--gradient-dark);
             color: var(--font-light);
@@ -94,7 +93,7 @@
         }
         .logo {
             font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
-            font-size: 2.2rem;
+            font-size: 3rem;
             letter-spacing: 0.19em;
             font-weight: bold;
             color: var(--accent);
@@ -111,9 +110,9 @@
             flex-wrap: wrap;
         }
         .nav-link {
-            padding: 0.62em 1.3em;
+            padding: 0.72em 2em;
             font-family: 'Montserrat', Arial, sans-serif;
-            font-size: 1rem;
+            font-size: 1.13rem;
             color: var(--font-light);
             text-decoration: none;
             background: transparent;
@@ -135,12 +134,14 @@
             transform: scale(1.07);
         }
         main {
-            padding: 2rem 0.5rem 2.5rem 0.5rem;
+            padding: 2.5rem 1rem 4rem 1rem;
             max-width: 950px;
             margin: 0 auto;
             text-align: center;
             position: relative;
             z-index: 1;
+            width: 100%;
+            box-sizing: border-box;
         }
         .typewriter-wrapper {
             display: flex;
@@ -149,11 +150,15 @@
             min-height: 3.2em;
             height: 3.2em;
             margin-bottom: 0.3em;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
+            overflow: hidden;
         }
         .typewriter {
             display: inline-block;
             font-family: 'Orbitron', Arial, sans-serif;
-            font-size: 2.1rem;
+            font-size: 2.3rem;
             font-weight: 900;
             background: linear-gradient(90deg, #1e2b39 30%, #46aaff 80%);
             -webkit-background-clip: text;
@@ -164,7 +169,8 @@
             overflow: hidden;
             animation: blink-cursor 0.7s steps(1) infinite;
             letter-spacing: 1.5px;
-            min-width: 15.5em;
+            min-width: 0;
+            max-width: 100vw;
             box-sizing: border-box;
         }
         @keyframes blink-cursor {
@@ -172,23 +178,25 @@
             50% { border-color: transparent;}
         }
         .hero-art {
-            margin: 0 auto 2rem auto;
+            margin: 0 auto 2.7rem auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
+            gap: 1.6rem;
+            max-width: 100vw;
+            box-sizing: border-box;
         }
         .hero-circle {
-            width: 32px;
-            height: 32px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: var(--tech-cyan);
             opacity: 0.19;
         }
         .hero-wave {
-            width: 90px;
-            height: 32px;
-            background: url('data:image/svg+xml;utf8,<svg width="90" height="32" xmlns="http://www.w3.org/2000/svg"><path d="M0,16 Q22,0 45,16 Q68,32 90,16" stroke="%2346aaff" stroke-width="5" fill="none" /></svg>') no-repeat center/contain;
+            width: 130px;
+            height: 42px;
+            background: url('data:image/svg+xml;utf8,<svg width="130" height="42" xmlns="http://www.w3.org/2000/svg"><path d="M0,21 Q32,0 65,21 Q98,42 130,21" stroke="%2346aaff" stroke-width="6" fill="none" /></svg>') no-repeat center/contain;
             opacity: 0.42;
             margin-top: 0.5rem;
         }
@@ -196,24 +204,28 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 2.2rem;
             margin-top: 2rem;
+            width: 100%;
+            max-width: 100vw;
+            box-sizing: border-box;
         }
         .service-card {
             background: var(--card-bg);
             border-radius: var(--border-radius);
             box-shadow: var(--card-shadow);
-            width: 95vw;
+            width: 100%;
             max-width: 340px;
-            padding: 1.3rem 1.1rem 1.2rem 1.1rem;
+            padding: 2rem 1.1rem 1.5rem 1.1rem;
             margin-bottom: 1rem;
             transition: transform 0.22s, box-shadow 0.24s, background 0.2s;
             position: relative;
             cursor: pointer;
             border: 2.5px solid #ddebf9;
+            box-sizing: border-box;
         }
         .service-card:hover {
-            transform: scale(1.03) rotate(-2deg);
+            transform: scale(1.04) rotate(-2deg);
             box-shadow: 0 8px 40px 0 #1e2b3933, 0 0px 0px 0 #fff;
             background: #f6fafd;
             border-color: var(--tech-green);
@@ -221,7 +233,7 @@
         }
         .service-card h3 {
             font-family: 'Montserrat', Arial, sans-serif;
-            font-size: 1.08rem;
+            font-size: 1.28rem;
             margin-bottom: 0.6rem;
             margin-top: 0.7rem;
             color: var(--primary);
@@ -229,7 +241,7 @@
             letter-spacing: 0.03em;
         }
         .service-card .icon {
-            font-size: 2rem;
+            font-size: 2.4rem;
             margin-bottom: 0.2rem;
             display: block;
             color: var(--accent);
@@ -241,7 +253,7 @@
             transform: scale(1.2) rotate(8deg);
         }
         .service-card p {
-            font-size: 0.97rem;
+            font-size: 1.09rem;
             color: var(--primary);
             font-weight: 700;
             letter-spacing: 0.01em;
@@ -266,21 +278,23 @@
             opacity: 1;
         }
         .cta {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
+            width: 100%;
+            box-sizing: border-box;
         }
         .cta-button {
             background: var(--gradient-dark);
             color: #fff;
             border: none;
             border-radius: 24px;
-            font-size: 1.13rem;
+            font-size: 1.22rem;
             font-family: 'Montserrat', Arial, sans-serif;
             font-weight: 900;
-            padding: 0.9rem 2.3rem;
+            padding: 1.1rem 3.3rem;
             letter-spacing: 0.1em;
             cursor: pointer;
             box-shadow: 0 0 16px #46aaff44;
-            margin: 0 0.5rem 0.6rem 0.5rem;
+            margin: 0 0.7rem 0.7rem 0.7rem;
             transition: background 0.16s, color 0.16s, transform 0.13s, box-shadow 0.15s;
             text-shadow: 0 2px 10px #1e2b3912;
         }
@@ -288,7 +302,7 @@
             background: var(--tech-green);
             color: var(--bg-dark);
             box-shadow: 0 0 32px #46aaff77;
-            transform: scale(1.07) rotate(-2deg);
+            transform: scale(1.09) rotate(-2deg);
         }
         .cta-button:active {
             transform: scale(0.97);
@@ -297,31 +311,35 @@
             background: var(--secondary);
             border-radius: 24px;
             box-shadow: 0 2px 32px 0 rgba(30,43,57,0.12);
-            padding: 2rem 0.7rem 1.2rem 0.7rem;
-            max-width: 98vw;
-            margin: 2rem auto 0 auto;
+            padding: 2.4rem 1.1rem 1.4rem 1.1rem;
+            max-width: 700px;
+            margin: 3rem auto 0 auto;
             border: 2.5px solid #ddebf9;
+            width: 100%;
+            box-sizing: border-box;
         }
         section h2 {
             font-family: 'Montserrat', Arial, sans-serif;
             color: var(--primary);
-            font-size: 1.4rem;
+            font-size: 2.1rem;
             font-weight: 900;
             margin-bottom: 1rem;
             letter-spacing: 0.01em;
         }
         .about-list {
-            margin-top:1.2em; 
+            margin-top:1.5em; 
             color: var(--primary); 
             text-align: left; 
-            max-width: 320px; 
+            max-width: 370px; 
             margin-left: auto; 
             margin-right: auto;
-            font-size: 1.01rem;
+            font-size: 1.13rem;
             font-weight: 700;
+            width: 100%;
+            box-sizing: border-box;
         }
         .about-list li {
-            margin-bottom: 0.7rem;
+            margin-bottom: 0.8rem;
             list-style: none;
             position: relative;
             padding-left: 2.1em;
@@ -338,17 +356,17 @@
         form.contact-form {
             display: flex;
             flex-direction: column;
-            gap: 0.9rem;
+            gap: 1.1rem;
             margin-top: 1.2rem;
         }
         .contact-form input,
         .contact-form textarea {
-            padding: 0.85em 1em;
+            padding: 1em 1.1em;
             border-radius: 12px;
             border: 2px solid #ddebf9;
             background: #fafdff;
             color: var(--primary);
-            font-size: 1.01rem;
+            font-size: 1.13rem;
             font-family: 'Poppins', Arial, sans-serif;
             font-weight: 600;
             resize: vertical;
@@ -400,10 +418,10 @@
             background: var(--bg-dark);
             color: #fff;
             text-align: center;
-            padding: 1.2rem 0;
-            font-size: 1rem;
+            padding: 1.6rem 0;
+            font-size: 1.09rem;
             letter-spacing: 0.03em;
-            margin-top: 2.2rem;
+            margin-top: 3rem;
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
             box-shadow: 0 -4px 24px 0 #1e2b3933;
@@ -417,16 +435,28 @@
             .service-card { max-width: 330px; }
         }
         @media (max-width: 700px) {
-            .logo { font-size: 1.5rem; }
+            main, section {
+                max-width: 100vw;
+                padding-left: 2vw;
+                padding-right: 2vw;
+            }
+            .logo { font-size: 2.1rem; }
             nav { flex-direction: column; gap: 1rem; }
-            .typewriter-wrapper { min-height: 2em; height: 2em; }
-            .typewriter { font-size: 1.1rem; min-width: 10em; }
+            .typewriter-wrapper { min-height: 2.2em; height: 2.2em; }
+            .typewriter { font-size: 1.3rem; }
+            .service-card { width: 100%; max-width: 99vw; }
+            .about-list { max-width: 99vw; }
+            .cta { flex-direction: column; }
         }
         @media (max-width: 475px) {
-            section, main { padding-left: 2vw; padding-right: 2vw; }
-            .typewriter { font-size: 1rem; min-width: 7em; }
-            .service-card { max-width: 95vw; }
-            .about-list { max-width: 96vw; }
+            main, section, .service-card, .about-list {
+                padding-left: 1vw;
+                padding-right: 1vw;
+                max-width: 100vw;
+            }
+            .typewriter { font-size: 1rem; }
+            .service-card { max-width: 100vw; }
+            .about-list { max-width: 100vw; }
         }
     </style>
 </head>
@@ -455,7 +485,7 @@
                 <span class="typewriter" id="typewriter"></span>
             </div>
         </h1>
-        <p style="font-size: 1.14rem; max-width: 98vw; margin: 1.15rem auto 1.25rem auto; color: #1e2b39; font-weight: 900; letter-spacing: 0.01em;">
+        <p style="font-size: 1.37rem; max-width: 640px; margin: 1.5rem auto 2.5rem auto; color: #1e2b39; font-weight: 900; letter-spacing: 0.01em;">
             Kode is your all-in-one creative agency specializing in web design, graphic design, websites, ads, edits, logos, and more.<br>
             <span style="color:var(--accent); font-weight: bold;">Let us bring your vision to life!</span>
         </p>
@@ -506,7 +536,7 @@
     </main>
     <section id="about">
         <h2>About Kode</h2>
-        <p style="color: #1e2b39; margin: 0.5rem auto 0; max-width: 96vw; font-size: 1.01rem; font-weight: 900;">
+        <p style="color: #1e2b39; margin: 0.5rem auto 0; max-width: 650px; font-size: 1.13rem; font-weight: 900;">
            Kode brings together the best of tech and art, blending playful, modern aesthetics with cutting-edge digital solutions.
         </p>
         <ul class="about-list">
@@ -517,12 +547,12 @@
     </section>
     <section id="contact">
     <h2>Contact Us</h2>
-    <p style="color: #1e2b39; font-size: 1.06rem; font-weight: 900;">
+    <p style="color: #1e2b39; font-size: 1.15rem; font-weight: 900;">
         Ready to electrify your brand? Use the form below or email 
         <a href="mailto:kodecreativestudio@gmail.com" class="decorative-link">kodecreativestudio@gmail.com</a><br>
         Phone: <a href="tel:0749099243" class="decorative-link">074 909 9243</a>
     </p>
-    <p style="color: #20446e; font-size: 0.98rem; font-weight: 700; margin-top: -0.4em;">
+    <p style="color: #20446e; font-size: 1.04rem; font-weight: 700; margin-top: -0.4em;">
         We will contact you within 48 hours.
     </p>
     <form class="contact-form" action="https://formspree.io/f/mwpbqnoq" method="POST">
@@ -532,7 +562,7 @@
         <textarea name="message" placeholder="How can we help you?" rows="4" required></textarea>
         <button type="submit" class="cta-button">Send Message</button>
     </form>
-    <p style="color:#888; font-size:0.87rem; margin-top:1.1em;">Your information is sent securely and privately via Formspree.</p>
+    <p style="color:#888; font-size:0.9rem; margin-top:1.2em;">Your information is sent securely and privately via Formspree.</p>
 </section>
     <footer>
         &copy; 2025 Kode Creative. All rights reserved.
