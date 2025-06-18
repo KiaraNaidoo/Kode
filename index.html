@@ -134,6 +134,15 @@
             position: relative;
             z-index: 1;
         }
+        /* Typewriter wrapper to fix height */
+        .typewriter-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 3.2em;
+            height: 3.2em; /* enough for all lines */
+            margin-bottom: 0.3em;
+        }
         .typewriter {
             display: inline-block;
             font-family: 'Orbitron', Arial, sans-serif;
@@ -148,6 +157,8 @@
             overflow: hidden;
             animation: blink-cursor 0.7s steps(1) infinite;
             letter-spacing: 1.5px;
+            min-width: 25em; /* set to the max length needed, adjust as needed */
+            box-sizing: border-box;
         }
         @keyframes blink-cursor {
             0%, 100% { border-color: var(--accent);}
@@ -412,6 +423,8 @@
             }
             .hero-art { display: none; }
             .logo { font-size: 2.1rem; }
+            .typewriter-wrapper { min-height: 2.2em; height: 2.2em; }
+            .typewriter { font-size: 1.3rem; min-width: 17em; }
         }
     </style>
 </head>
@@ -436,7 +449,9 @@
     </header>
     <main>
         <h1>
-            <span class="typewriter" id="typewriter"></span>
+            <div class="typewriter-wrapper">
+                <span class="typewriter" id="typewriter"></span>
+            </div>
         </h1>
         <p style="font-size: 1.37rem; max-width: 640px; margin: 1.5rem auto 2.5rem auto; color: #1e2b39; font-weight: 900; letter-spacing: 0.01em;">
             Kode is your all-in-one creative agency specializing in web design, graphic design, websites, ads, edits, logos, and more.<br>
@@ -502,10 +517,10 @@
     <h2>Contact Us</h2>
     <p style="color: #1e2b39; font-size: 1.15rem; font-weight: 900;">
         Ready to electrify your brand? Use the form below or email 
-<a href="mailto:kodecreativestudio@gmail.com" class="decorative-link">kodecreativestudio@gmail.com</a><br>
+        <a href="mailto:kodecreativestudio@gmail.com" class="decorative-link">kodecreativestudio@gmail.com</a><br>
     </p>
     <p style="color: #20446e; font-size: 1.04rem; font-weight: 700; margin-top: -0.4em;">
-        We will contact you within 24 hours.
+        We will contact you within 48 hours.
     </p>
     <form class="contact-form" action="https://formspree.io/f/mwpbqnoq" method="POST">
         <input type="text" name="name" placeholder="Your Name" required autocomplete="off">
@@ -529,6 +544,20 @@
         ];
         let twElem = document.getElementById("typewriter");
         let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+        // Calculate the longest word for min-width
+        function getLongestWord(words) {
+            let max = '';
+            for (let w of words) if (w.length > max.length) max = w;
+            return max;
+        }
+        // Set min-width for typewriter based on longest word (improves box stability)
+        document.addEventListener("DOMContentLoaded", function () {
+            const longest = getLongestWord(words);
+            if (twElem) {
+                twElem.style.minWidth = (longest.length * 1.15) + "ch";
+            }
+        });
 
         function typeWriter() {
             let word = words[wordIndex];
