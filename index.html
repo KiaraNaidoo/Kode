@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kode: Creative Creative Studio</title>
+    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700|Montserrat:700|Poppins:400,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-light: #f6fafd;
+            --bg-dark: #1e2b39;
+            --accent: #46aaff;
+            --primary: #20446e;
+            --secondary: #f6fafd;
+            --card-bg: #fff;
+            --card-shadow: 0 8px 32px 0 rgba(30,43,57,0.11);
+            --border-radius: 20px;
+            --gradient: linear-gradient(90deg, #f6fafd 0%, #ddebf9 100%);
+            --gradient-dark: linear-gradient(90deg, #1e2b39 0%, #46aaff 100%);
+            --font-dark: #162438;
+            --font-light: #fff;
+            --tech-green: #5be9b9;
+            --tech-cyan: #36e1ff;
+        }
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: var(--bg-light);
+            color: var(--font-dark);
+            font-family: 'Poppins', 'Roboto', Arial, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .futuristic-bg {
+            pointer-events: none;
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+        }
+        .futuristic-circuit {
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            background:
+                repeating-linear-gradient(120deg, #46aaff1a 0 2px, transparent 5px 35px),
+                repeating-linear-gradient(60deg, #5be9b91a 0 2px, transparent 8px 38px);
+            opacity: 0.13;
+            z-index: 1;
+        }
+        .futuristic-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 60% 40%, #46aaff55 0%, transparent 75%);
+            opacity: 0.18;
+            width: 620px; height: 420px;
+            left: -160px; top: -90px;
+            filter: blur(10px);
+            animation: float1 20s ease-in-out infinite alternate;
+        }
+        .futuristic-shape2 {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 40% 60%, #1e2b3977 0%, transparent 85%);
+            opacity: 0.10;
+            width: 550px; height: 350px;
+            right: -170px; bottom: -120px;
+            filter: blur(14px);
+            animation: float2 28s ease-in-out infinite alternate;
+        }
+        @keyframes float1 {
+            0% { transform: scale(1) translateY(0);}
+            100% { transform: scale(1.12) translateY(25px);}
+        }
+        @keyframes float2 {
+            0% { transform: scale(1) translateY(0);}
+            100% { transform: scale(1.08) translateY(-30px);}
+        }
+
+        header {
+            background: var(--gradient-dark);
+            color: var(--font-light);
+            box-shadow: 0 4px 24px 0 rgba(30,43,57,0.05);
+            text-align: center;
+            padding: 3rem 0 1rem 0;
+            position: relative;
+            z-index: 2;
+        }
+        .logo {
+            font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+            font-size: 3rem;
+            letter-spacing: 0.19em;
+            font-weight: bold;
+            color: var(--accent);
+            text-shadow: 0 4px 18px #16243830, 0 1px 0 #fff;
+            margin-bottom: 0.3em;
+            display: inline-block;
+            background: none;
+        }
+        nav {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+        .nav-link {
+            padding: 0.72em 2em;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.13rem;
+            color: var(--font-light);
+            text-decoration: none;
+            background: transparent;
+            border: 2px solid var(--accent);
+            border-radius: 2em;
+            font-weight: 800;
+            margin: 0 0.2em;
+            box-shadow: 0 2px 16px 0 rgba(70,170,255,0.10);
+            transition: background 0.21s, color 0.21s, border-color 0.21s, transform 0.18s;
+            letter-spacing: 0.02em;
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--accent);
+            color: var(--bg-dark);
+            border-color: var(--tech-green);
+            transform: scale(1.07);
+        }
+        main {
+            padding: 2.5rem 1rem 4rem 1rem;
+            max-width: 950px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .typewriter {
+            display: inline-block;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 2.3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #1e2b39 30%, #46aaff 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-right: 3px solid var(--accent);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink-cursor 0.7s steps(1) infinite;
+            letter-spacing: 1.5px;
+        }
+        @keyframes blink-cursor {
+            0%, 100% { border-color: var(--accent);}
+            50% { border-color: transparent;}
+        }
+        .hero-art {
+            margin: 0 auto 2.7rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.6rem;
+        }
+        .hero-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--tech-cyan);
+            opacity: 0.19;
+        }
+        .hero-wave {
+            width: 130px;
+            height: 42px;
+            background: url('data:image/svg+xml;utf8,<svg width="130" height="42" xmlns="http://www.w3.org/2000/svg"><path d="M0,21 Q32,0 65,21 Q98,42 130,21" stroke="%2346aaff" stroke-width="6" fill="none" /></svg>') no-repeat center/contain;
+            opacity: 0.42;
+            margin-top: 0.5rem;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.2rem;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            width: 240px;
+            padding: 2rem 1.1rem 1.5rem 1.1rem;
+            margin-bottom: 1rem;
+            transition: transform 0.22s, box-shadow 0.24s, background 0.2s;
+            position: relative;
+            cursor: pointer;
+            border: 2.5px solid #ddebf9;
+        }
+        .service-card:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 40px 0 #1e2b3933, 0 0px 0px 0 #fff;
+            background: #f6fafd;
+            border-color: var(--tech-green);
+            z-index: 2;
+        }
+        .service-card h3 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 1.28rem;
+            margin-bottom: 0.6rem;
+            margin-top: 0.7rem;
+            color: var(--primary);
+            font-weight: 900;
+            letter-spacing: 0.03em;
+        }
+        .service-card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 0.2rem;
+            display: block;
+            color: var(--accent);
+            filter: drop-shadow(0 3px 8px #46aaff33);
+            transition: transform 0.18s;
+        }
+        .service-card:hover .icon {
+            color: var(--tech-green);
+            transform: scale(1.2) rotate(8deg);
+        }
+        .service-card p {
+            font-size: 1.09rem;
+            color: var(--primary);
+            font-weight: 700;
+            letter-spacing: 0.01em;
+        }
+        .tooltip {
+            position: absolute;
+            bottom: 110%;
+            left: 50%; transform: translateX(-50%);
+            background: var(--bg-dark);
+            color: #fff;
+            padding: 0.6em 1em;
+            border-radius: 10px;
+            box-shadow: 0 0 16px #46aaffbb;
+            font-size: 0.99em;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 10;
+            font-family: 'Poppins', Arial, sans-serif;
+        }
+        .service-card:hover .tooltip, .service-card:focus .tooltip {
+            opacity: 1;
+        }
+        .cta {
+            margin-top: 2.5rem;
+        }
+        .cta-button {
+            background: var(--gradient-dark);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            font-size: 1.22rem;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+            padding: 1.1rem 3.3rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            box-shadow: 0 0 16px #46aaff44;
+            margin: 0 0.7rem;
+            transition: background 0.16s, color 0.16s, transform 0.13s, box-shadow 0.15s;
+            text-shadow: 0 2px 10px #1e2b3912;
+        }
+        .cta-button:hover {
+            background: var(--tech-green);
+            color: var(--bg-dark);
+            box-shadow: 0 0 32px #46aaff77;
+            transform: scale(1.09) rotate(-2deg);
+        }
+        .cta-button:active {
+            transform: scale(0.97);
+        }
+        section {
+            background: var(--secondary);
+            border-radius: 24px;
+            box-shadow: 0 2px 32px 0 rgba(30,43,57,0.12);
+            padding: 2.4rem 1.1rem 1.4rem 1.1rem;
+            max-width: 700px;
+            margin: 3rem auto 0 auto;
+            border: 2.5px solid #ddebf9;
+        }
+        section h2 {
+            font-family: 'Montserrat', Arial, sans-serif;
+            color: var(--primary);
+            font-size: 2.1rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            letter-spacing: 0.01em;
+        }
+        .about-list {
+            margin-top:1.5em; 
+            color: var(--primary); 
+            text-align: left; 
+            max-width: 370px; 
+            margin-left: auto; 
+            margin-right: auto;
+            font-size: 1.13rem;
+            font-weight: 700;
+        }
+        .about-list li {
+            margin-bottom: 0.8rem;
+            list-style: none;
+            position: relative;
+            padding-left: 2.1em;
+        }
+        .about-list li:before {
+            content: "◆";
+            color: var(--tech-green);
+            position: absolute;
+            left: 0.2em;
+            font-size: 1.1em;
+            top: 0.04em;
+            opacity: 0.95;
+        }
+        form.contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+            margin-top: 1.2rem;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            padding: 1em 1.1em;
+            border-radius: 12px;
+            border: 2px solid #ddebf9;
+            background: #fafdff;
+            color: var(--primary);
+            font-size: 1.13rem;
+            font-family: 'Poppins', Arial, sans-serif;
+            font-weight: 600;
+            resize: vertical;
+            box-shadow: 0 0 8px #46aaff11;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: var(--accent);
+            background: #f6fafd;
+        }
+        .contact-form button {
+            align-self: flex-end;
+        }
+        .success-message {
+            color: var(--tech-green);
+            margin-top: 1rem;
+            font-weight: bold;
+            text-shadow: 0 0 8px #7cc4fa;
+            display: none;
+        }
+        a.decorative-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 900;
+            position: relative;
+            transition: color 0.2s;
+        }
+        a.decorative-link:after {
+            content: '';
+            display: block;
+            height: 4px;
+            width: 0;
+            background: var(--gradient-dark);
+            border-radius: 2px;
+            transition: width 0.34s;
+            margin: 0 auto;
+            margin-top: 2px;
+        }
+        a.decorative-link:hover, a.decorative-link:focus {
+            color: var(--primary);
+        }
+        a.decorative-link:hover:after, a.decorative-link:focus:after {
+            width: 100%;
+        }
+        footer {
+            background: var(--bg-dark);
+            color: #fff;
+            text-align: center;
+            padding: 1.6rem 0;
+            font-size: 1.09rem;
+            letter-spacing: 0.03em;
+            margin-top: 3rem;
+            border-top-left-radius: 24px;
+            border-top-right-radius: 24px;
+            box-shadow: 0 -4px 24px 0 #1e2b3933;
+            position: relative;
+            z-index: 2;
+        }
+        @media (max-width: 1000px) {
+            main { max-width: 98vw; }
+            .services { gap: 1.2rem; }
+        }
+        @media (max-width: 700px) {
+            .services {
+                flex-direction: column;
+                align-items: center;
+            }
+            .service-card {
+                width: 98%;
+            }
+            section {
+                padding: 1.2rem 0.5rem 0.9rem 0.5rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero-art { display: none; }
+            .logo { font-size: 2.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="futuristic-bg" aria-hidden="true">
+        <div class="futuristic-circuit"></div>
+        <div class="futuristic-shape"></div>
+        <div class="futuristic-shape2"></div>
+    </div>
+    <header>
+        <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'});">Kode</div>
+        <nav>
+            <a href="#services" class="nav-link" id="nav-services">Services</a>
+            <a href="#about" class="nav-link" id="nav-about">About</a>
+            <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
+        </nav>
+        <div class="hero-art">
+            <div class="hero-circle"></div>
+            <div class="hero-wave"></div>
+            <div class="hero-circle"></div>
+        </div>
+    </header>
+    <main>
+        <h1>
+            <span class="typewriter" id="typewriter"></span>
+        </h1>
+        <p style="font-size: 1.37rem; max-width: 640px; margin: 1.5rem auto 2.5rem auto; color: #1e2b39; font-weight: 900; letter-spacing: 0.01em;">
+            Kode is your all-in-one creative agency specializing in web design, graphic design, websites, ads, edits, logos, and more.<br>
+            <span style="color:var(--accent); font-weight: bold;">Let us bring your vision to life!</span>
+        </p>
+        <div class="services" id="services">
+            <div class="service-card" tabindex="0">
+                <span class="icon">💻</span>
+                <div class="tooltip">See our stylish & modern web designs!</div>
+                <h3>Web Design</h3>
+                <p>Stunning, responsive sites with a creative edge. Tailored for businesses, portfolios, and brands.</p>
+            </div>
+            <div class="service-card" tabindex="0">
+                <span class="icon">🎨</span>
+                <div class="tooltip">Ask us about custom artwork!</div>
+                <h3>Graphic Design</h3>
+                <p>Eye-catching visuals, posters, and digital art—crafted to make your brand unforgettable.</p>
+            </div>
+            <div class="service-card" tabindex="0">
+                <span class="icon">🌐</span>
+                <div class="tooltip">Need a website fast? Challenge us!</div>
+                <h3>Websites</h3>
+                <p>From one-page starters to dynamic platforms, we build secure and scalable websites.</p>
+            </div>
+            <div class="service-card" tabindex="0">
+                <span class="icon">🚀</span>
+                <div class="tooltip">Get ads and edits that pop!</div>
+                <h3>Ads & Edits</h3>
+                <p>High-impact advertisements and video/photo edits tailored to your campaign goals.</p>
+            </div>
+            <div class="service-card" tabindex="0">
+                <span class="icon">⚡</span>
+                <div class="tooltip">We design logos that glow!</div>
+                <h3>Logos</h3>
+                <p>Distinctive, memorable logos—modern, unique, and made for your identity.</p>
+            </div>
+            <div class="service-card" tabindex="0">
+                <span class="icon">✨</span>
+                <div class="tooltip">Pitch us your wildest idea!</div>
+                <h3>...and More!</h3>
+                <p>Have a creative idea? We’re ready for any coding or design challenge you can dream up.</p>
+            </div>
+        </div>
+        <div class="cta">
+            <a href="#contact">
+                <button class="cta-button">Start Your Project</button>
+            </a>
+            <button class="cta-button" onclick="scrollToServices()">View All Services</button>
+        </div>
+    </main>
+    <section id="about">
+        <h2>About Kode</h2>
+        <p style="color: #1e2b39; margin: 0.5rem auto 0; max-width: 650px; font-size: 1.13rem; font-weight: 900;">
+           Kode brings together the best of tech and art, blending playful, modern aesthetics with cutting-edge digital solutions.
+        </p>
+        <ul class="about-list">
+            <li>Fast turnarounds & creative problem solving</li>
+            <li>Custom solutions for any industry</li>
+            <li>Friendly, collaborative process</li>
+        </ul>
+    </section>
+    <section id="contact">
+    <h2>Contact Us</h2>
+    <p style="color: #1e2b39; font-size: 1.15rem; font-weight: 900;">
+        Ready to electrify your brand? Use the form below or email 
+<a href="mailto:kodecreativestudio@gmail.com" class="decorative-link">kodecreativestudio@gmail.com</a><br>
+    </p>
+    <p style="color: #20446e; font-size: 1.04rem; font-weight: 700; margin-top: -0.4em;">
+        We will contact you within 24 hours.
+    </p>
+    <form class="contact-form" action="https://formspree.io/f/mwpbqnoq" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required autocomplete="off">
+        <input type="email" name="email" placeholder="Your Email" required autocomplete="off">
+        <input type="tel" name="phone" placeholder="Your Contact Number" pattern="[\d\s\-\+\(\)]*" autocomplete="off">
+        <textarea name="message" placeholder="How can we help you?" rows="4" required></textarea>
+        <button type="submit" class="cta-button">Send Message</button>
+    </form>
+    <p style="color:#888; font-size:0.9rem; margin-top:1.2em;">Your information is sent securely and privately via Formspree.</p>
+</section>
+    <footer>
+        &copy; 2025 Kode Creative. All rights reserved.
+    </footer>
+    <script>
+        // Typewriter effect
+        const words = [
+            "Ignite Your Brand with Kode...",
+            "Web Design. Graphic Design. Websites. Edits. Logos.",
+            "Creativity Meets Code.",
+            "Bring Your Vision To Life!"
+        ];
+        let twElem = document.getElementById("typewriter");
+        let wordIndex = 0, charIndex = 0, isDeleting = false;
+
+        function typeWriter() {
+            let word = words[wordIndex];
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+            twElem.textContent = word.substring(0, charIndex);
+
+            let typeSpeed = isDeleting ? 35 : 75;
+            if (!isDeleting && charIndex === word.length) {
+                typeSpeed = 1200;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 470;
+            }
+            setTimeout(typeWriter, typeSpeed);
+        }
+        typeWriter();
+
+        // Scroll to services
+        function scrollToServices() {
+            document.getElementById('services').scrollIntoView({behavior: 'smooth'});
+        }
+
+        // Interactive tooltips with keyboard support
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('focus', () => {
+                card.querySelector('.tooltip').style.opacity = 1;
+            });
+            card.addEventListener('blur', () => {
+                card.querySelector('.tooltip').style.opacity = 0;
+            });
+        });
+
+        // Decorative nav link active state on scroll
+        const navLinks = [
+            { id: "nav-services", section: "services" },
+            { id: "nav-about", section: "about" },
+            { id: "nav-contact", section: "contact" }
+        ];
+        const navOffset = 120;
+        window.addEventListener('scroll', () => {
+            let current = "";
+            navLinks.forEach(link => {
+                const section = document.getElementById(link.section);
+                if (section) {
+                    const sectionTop = section.offsetTop - navOffset;
+                    if (pageYOffset >= sectionTop) current = link.id;
+                }
+            });
+            navLinks.forEach(link => {
+                const navEl = document.getElementById(link.id);
+                if (navEl) navEl.classList.toggle('active', link.id === current);
+            });
+        });
+    </script>
+</body>
+</html>
