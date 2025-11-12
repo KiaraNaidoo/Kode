@@ -1,13 +1,19 @@
-/* Main JS for Kode site (shared across pages) */
+/* js/main.js
+   Improved shared JS for the Kode site (shared across pages).
+   - Contact form: only shows success after confirmed 2xx response.
+   - Clears the form AFTER success (form.reset()).
+   - Disables submit while sending to prevent double submits.
+   - Better error messages and console logging for debugging.
+   - Other helpers: nav highlighting, typewriter init, tooltips, view services button.
+*/
 
 (function () {
-  // Utility: mark current page in nav
+  // --- Nav highlighting ---
   function setActiveNav() {
     const links = document.querySelectorAll('.site-nav .nav-link');
     const path = location.pathname.split('/').pop() || 'index.html';
     links.forEach(a => {
       const href = a.getAttribute('href') || '';
-      // Normalize index path
       let normalizedHref = href.split('/').pop() || 'index.html';
       if (normalizedHref === '') normalizedHref = 'index.html';
       if (normalizedHref === path) {
@@ -20,7 +26,7 @@
     });
   }
 
-  // Typewriter (home only)
+  // --- Typewriter (home only) ---
   const words = [
     "Ignite Your Brand with Kode...",
     "Web Design. Graphic Design. Websites. Edits. Logos.",
@@ -60,66 +66,148 @@
     twTimeout = setTimeout(typeWriter, typeSpeed);
   }
 
-  // Scroll helper used on home
+  // --- Scroll helper used on home ---
   function scrollToServices() {
     const el = document.getElementById('services');
     if (el) el.scrollIntoView({ behavior: 'smooth' });
   }
 
-  // Tooltip focus handlers for service cards
+  // --- Tooltip focus handlers for service cards ---
   function initCardTooltips() {
     document.querySelectorAll('.service-card').forEach(card => {
       const tip = card.querySelector('.tooltip');
-      card.addEventListener('focus', () => { if (tip) tip.style.opacity = 1; });
-      card.addEventListener('blur', () => { if (tip) tip.style.opacity = 0; });
-      card.addEventListener('mouseover', () => { if (tip) tip.style.opacity = 1; });
-      card.addEventListener('mouseout', () => { if (tip) tip.style.opacity = 0; });
+      if (!tip) return;
+      card.addEventListener('focus', () => { tip.style.opacity = 1; });
+      card.addEventListener('blur', () => { tip.style.opacity = 0; });
+      card.addEventListener('mouseover', () => { tip.style.opacity = 1; });
+      card.addEventListener('mouseout', () => { tip.style.opacity = 0; });
     });
   }
 
-  // Contact form handling (AJAX to Formspree with graceful fallback)
+  // --- Contact form handling (AJAX to Formspree) ---
   function initContactForm() {
     const form = document.getElementById('contact-form');
     if (!form) return;
+
     const successEl = document.getElementById('form-success');
     const errorEl = document.getElementById('form-error');
+    const submitButton = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', function (e) {
+    function setSending(isSending) {
+      if (submitButton) {
+        submitButton.disabled = isSending;
+        submitButton.setAttribute('aria-busy', isSending ? 'true' : 'false');
+      }
+    }
+
+    function showSuccess(msg) {
+      if (successEl) {
+        successEl.hidden = false;
+        successEl.textContent = msg || 'Thanks — your message was sent. We will be in touch within 24 hours.';
+      }
+      if (errorEl) errorEl.hidden = true;
+    }
+
+    function showError(msg) {
+      if (errorEl) {
+        errorEl.hidden = false;
+        errorEl.textContent = msg || 'Oops — there was a problem sending your message. Please try again or email us directly.';
+      }
+      if (successEl) successEl.hidden = true;
+    }
+
+    async function onSubmit(e) {
       e.preventDefault();
+
+      // hide prior messages
       if (successEl) successEl.hidden = true;
       if (errorEl) errorEl.hidden = true;
 
-      const action = form.getAttribute('action');
-      const formData = new FormData(form);
-      // Send with fetch; if it fails, let the user know and fallback to native submit
-      fetch(action, {
-        method: form.method || 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
+      // Basic client-side validity; if invalid, let browser show message
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      const action = (form.getAttribute('action') || '').trim();
+      if (!action) {
+        console.error('Contact form has no action attribute.');
+        showError('Form misconfigured: no action URL.');
+        return;
+      }
+
+      const method = (form.method || 'POST').toUpperCase();
+      const data = new FormData(form);
+
+      setSending(true);
+
+      try {
+        const res = await fetch(action, {
+          method: method,
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        // parse response based on content-type
+        const contentType = res.headers.get('content-type') || '';
+        let responseBody = null;
+        try {
+          if (contentType.includes('application/json')) {
+            responseBody = await res.json();
+          } else {
+            responseBody = await res.text();
+          }
+        } catch (parseErr) {
+          responseBody = null;
+          console.warn('Could not parse response body', parseErr);
         }
-      }).then(resp => {
-        if (resp.ok) {
-          if (successEl) { successEl.hidden = false; }
+
+        if (res.ok) {
+          // Only AFTER confirmed success:
+          showSuccess();
+          // Clear the form AFTER success:
           form.reset();
+          // Move focus to the first input for accessibility
+          const firstInput = form.querySelector('input, textarea, select');
+          if (firstInput) firstInput.focus();
         } else {
-          return resp.json().then(data => Promise.reject(data));
+          // Non-2xx: surface message when available
+          console.error('Form submission failed', res.status, responseBody);
+          if (responseBody) {
+            if (typeof responseBody === 'object' && responseBody.error) {
+              showError('Server: ' + responseBody.error);
+            } else if (typeof responseBody === 'string') {
+              showError(responseBody);
+            } else {
+              showError('Server returned an error. Status: ' + res.status);
+            }
+          } else {
+            showError('Server returned status ' + res.status + '. See console for details.');
+          }
         }
-      }).catch(() => {
-        // Show error notice; don't auto-fallback
-        if (errorEl) { errorEl.hidden = false; }
-      });
-    });
+      } catch (err) {
+        // Network/CORS or other fetch error
+        console.error('Network/fetch error while sending form:', err);
+        showError('Network error while sending the form. If the problem persists, email us directly.');
+        // NOTE: intentionally not auto-falling back to native submit to avoid duplicate sends.
+      } finally {
+        setSending(false);
+      }
+    }
+
+    // Ensure single listener
+    form.removeEventListener('submit', onSubmit);
+    form.addEventListener('submit', onSubmit);
   }
 
-  // Attach view services button on home
+  // --- Attach view services button on home ---
   function initViewServicesButton() {
     const btn = document.getElementById('view-services');
     if (!btn) return;
     btn.addEventListener('click', () => {
-      // Prefer smooth scroll when on the home page preview; otherwise navigate to services page
       const servicesEl = document.getElementById('services');
-      if (servicesEl && location.pathname.endsWith('index.html') || location.pathname === '/') {
+      const isHome = location.pathname.endsWith('index.html') || location.pathname === '/';
+      if (servicesEl && isHome) {
         servicesEl.scrollIntoView({ behavior: 'smooth' });
       } else {
         location.href = 'services.html';
@@ -127,16 +215,18 @@
     });
   }
 
-  // Init on DOM ready
+  // --- Init on DOM ready ---
   document.addEventListener('DOMContentLoaded', function () {
     setActiveNav();
     initCardTooltips();
     initContactForm();
     initViewServicesButton();
-    // If the page is index, typewriter initialisation is handled inline by index.html script for clarity.
+
+    const isHome = location.pathname.endsWith('index.html') || location.pathname === '/';
+    if (isHome) initTypewriter();
   });
 
-  // Expose some helpers globally for inline usage from index.html
+  // Expose helpers if needed
   window.initTypewriter = initTypewriter;
   window.scrollToServices = scrollToServices;
 
