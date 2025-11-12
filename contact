@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Contact Kode Creative Studio — get in touch to start a project or request a quote." />
+  <title>Kode: Contact</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700|Montserrat:700|Poppins:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="index.html">Kode</a>
+      <nav class="site-nav" role="navigation" aria-label="Main navigation">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="services.html">Services</a>
+        <a class="nav-link" href="about.html">About</a>
+        <a class="nav-link" href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" role="main">
+    <section class="section-card" aria-labelledby="contact-heading">
+      <h1 id="contact-heading">Contact Us</h1>
+      <p class="lead">Ready to electrify your brand? Use the form below or email <a class="decorative-link" href="mailto:kodecreativestudio@gmail.com">kodecreativestudio@gmail.com</a>. We usually respond within 24 hours.</p>
+
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/mwpbqnoq" method="POST" novalidate>
+        <label class="sr-only" for="name">Your Name</label>
+        <input id="name" name="name" type="text" placeholder="Your Name" required autocomplete="name">
+
+        <label class="sr-only" for="email">Your Email</label>
+        <input id="email" name="email" type="email" placeholder="Your Email" required autocomplete="email">
+
+        <label class="sr-only" for="phone">Contact Number</label>
+        <input id="phone" name="phone" type="tel" placeholder="Your Contact Number" pattern="[\d\s\-\+\(\)]*" autocomplete="tel">
+
+        <label class="sr-only" for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="How can we help you?" required></textarea>
+
+        <div style="display:flex; gap:0.5rem; align-items:center; justify-content:flex-end;">
+          <button type="submit" class="cta-button">Send Message</button>
+        </div>
+
+        <div id="form-success" class="success-message" role="status" aria-live="polite" hidden>
+          Thanks — your message was sent. We'll be in touch within 24 hours.
+        </div>
+        <div id="form-error" class="error-message" role="alert" hidden>
+          Oops — there was a problem sending your message. Please try again or email us directly.
+        </div>
+      </form>
+
+      <p class="small" style="margin-top:1rem;color:#888;">Your information is sent securely and privately via Formspree.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p>&copy; 2025 Kode Creative. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
