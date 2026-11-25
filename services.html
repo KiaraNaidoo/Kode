@@ -3,76 +3,158 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Services at Kode Creative Studio — web design, graphic design, websites, ads, edits, logos and more." />
-  <title>Kode: Services</title>
+  <meta name="description" content="Services at Kode Creative Studio — web design, graphic design, websites, ads, edits, logos and custom builds." />
+  <title>Kode | Services &amp; Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700|Montserrat:700|Poppins:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="ambient-bg" aria-hidden="true">
+    <canvas id="neural-canvas"></canvas>
+    <div class="cyber-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <a class="logo" href="index.html">Kode</a>
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">[</span>KODE<span class="logo-bracket">]</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="services.html">Services</a>
         <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link nav-cta" href="contact.html">Start a Project</a>
       </nav>
     </div>
   </header>
 
   <main class="container" role="main">
-    <section class="section-card" aria-labelledby="services-heading">
-      <h1 id="services-heading">Services</h1>
-      <p class="lead" style="max-width:720px; margin:0 auto 1rem;">We offer a broad spectrum of creativity and technical execution. Below are highlights of what we do — click a card to get in touch about that service.</p>
+    <section class="glass-panel reveal" aria-labelledby="services-heading">
+      <div class="page-intro">
+        <span class="eyebrow">SERVICE MATRIX // 06 MODULES</span>
+        <h1 id="services-heading">Creative &amp; Technical Execution</h1>
+        <p class="lead">Filter by discipline or click any module to launch a tailored project quote.</p>
 
-      <div class="services services-grid">
-        <article class="service-card large" tabindex="0" aria-labelledby="w1">
-          <span class="icon" aria-hidden="true">💻</span>
+        <!-- Interactive Category Filter -->
+        <div class="filter-bar" role="tablist" aria-label="Filter services">
+          <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All Modules</button>
+          <button class="filter-btn" data-filter="web" role="tab" aria-selected="false">Web &amp; Code</button>
+          <button class="filter-btn" data-filter="brand" role="tab" aria-selected="false">Design &amp; Brand</button>
+          <button class="filter-btn" data-filter="media" role="tab" aria-selected="false">Ads &amp; Custom</button>
+        </div>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card tilt-card" data-category="web" data-service="Web Design" tabindex="0" aria-labelledby="w1">
+          <div class="card-shine"></div>
+          <div class="card-top">
+            <div class="card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            </div>
+            <span class="module-tag">MOD.01</span>
+          </div>
           <h3 id="w1">Web Design</h3>
-          <p>UX-first approach, responsive layouts, design systems and accessible interfaces. We deliver prototypes, handoffs, and full implementations.</p>
+          <p>UX-first approach, responsive layouts, design systems, and accessible interfaces. We deliver interactive prototypes, clean handoffs, and full implementations.</p>
+          <span class="card-action">Inquire About Web Design &rarr;</span>
         </article>
 
-        <article class="service-card large" tabindex="0" aria-labelledby="g1">
-          <span class="icon" aria-hidden="true">🎨</span>
+        <article class="service-card tilt-card" data-category="brand" data-service="Graphic Design" tabindex="0" aria-labelledby="g1">
+          <div class="card-shine"></div>
+          <div class="card-top">
+            <div class="card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>
+            </div>
+            <span class="module-tag">MOD.02</span>
+          </div>
           <h3 id="g1">Graphic Design</h3>
-          <p>Brand identity, marketing materials, social graphics and artwork for print or digital campaigns.</p>
+          <p>Visual collateral, marketing materials, social media suites, and bespoke artwork engineered for both digital and print campaigns.</p>
+          <span class="card-action">Inquire About Graphic Design &rarr;</span>
         </article>
 
-        <article class="service-card large" tabindex="0" aria-labelledby="l1">
-          <span class="icon" aria-hidden="true">⚡</span>
-          <h3 id="l1">Logos & Branding</h3>
-          <p>Memorable logos and identity systems that scale across media.</p>
+        <article class="service-card tilt-card" data-category="brand" data-service="Logos & Branding" tabindex="0" aria-labelledby="l1">
+          <div class="card-shine"></div>
+          <div class="card-top">
+            <div class="card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+            </div>
+            <span class="module-tag">MOD.03</span>
+          </div>
+          <h3 id="l1">Logos &amp; Branding</h3>
+          <p>Memorable brand marks, typography systems, and comprehensive identity guidelines designed to scale across every touchpoint.</p>
+          <span class="card-action">Inquire About Branding &rarr;</span>
         </article>
 
-        <article class="service-card large" tabindex="0" aria-labelledby="a1">
-          <span class="icon" aria-hidden="true">🚀</span>
-          <h3 id="a1">Ads & Edits</h3>
-          <p>High-conversion ad creatives, video/photo edits, and campaign assets designed to perform.</p>
+        <article class="service-card tilt-card" data-category="media" data-service="Ads & Edits" tabindex="0" aria-labelledby="a1">
+          <div class="card-shine"></div>
+          <div class="card-top">
+            <div class="card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </div>
+            <span class="module-tag">MOD.04</span>
+          </div>
+          <h3 id="a1">Ads &amp; Edits</h3>
+          <p>High-conversion ad creatives, dynamic video/photo post-production, and performance-driven campaign assets.</p>
+          <span class="card-action">Inquire About Ads &amp; Edits &rarr;</span>
         </article>
 
-        <article class="service-card large" tabindex="0" aria-labelledby="s1">
-          <span class="icon" aria-hidden="true">🌐</span>
+        <article class="service-card tilt-card" data-category="web" data-service="Website Builds" tabindex="0" aria-labelledby="s1">
+          <div class="card-shine"></div>
+          <div class="card-top">
+            <div class="card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <span class="module-tag">MOD.05</span>
+          </div>
           <h3 id="s1">Website Builds</h3>
-          <p>Static sites, headless CMS setups, e-commerce and custom platforms built to scale securely.</p>
+          <p>Lightning-fast static sites, headless CMS architectures, e-commerce storefronts, and custom web platforms built for security and speed.</p>
+          <span class="card-action">Inquire About Website Builds &rarr;</span>
         </article>
 
-        <article class="service-card large" tabindex="0" aria-labelledby="m1">
-          <span class="icon" aria-hidden="true">✨</span>
+        <article class="service-card tilt-card" data-category="media" data-service="Custom Work" tabindex="0" aria-labelledby="m1">
+          <div class="card-shine"></div>
+          <div class="card-top">
+            <div class="card-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </div>
+            <span class="module-tag">MOD.06</span>
+          </div>
           <h3 id="m1">Custom Work</h3>
-          <p>Have an unusual idea? We build custom tools, interactive experiences, and more.</p>
+          <p>Have an unconventional concept? We engineer bespoke web utilities, interactive digital experiences, and specialized creative solutions.</p>
+          <span class="card-action">Inquire About Custom Work &rarr;</span>
         </article>
       </div>
 
-      <div class="cta" style="margin-top:1.5rem;">
-        <a href="contact.html" class="cta-button-link"><button class="cta-button">Get a Quote</button></a>
+      <div class="cta-group" style="margin-top: 2.5rem;">
+        <a href="contact.html" class="btn btn-primary magnetic-btn">
+          <span>Request Custom Quote</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <p>&copy; 2025 Kode Creative. All rights reserved.</p>
+      <div class="footer-brand">
+        <span class="logo-small">[KODE]</span>
+        <p>Where aesthetic precision meets modern code.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <p class="copyright">&copy; 2026 Kode Creative Studio. All rights reserved.</p>
     </div>
   </footer>
 
