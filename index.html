@@ -3,96 +3,147 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="Kode Creative Studio — web design, graphic design, websites, ads, edits, logos and more. Creativity meets code." />
-  <title>Kode: Creative Studio — Home</title>
+  <meta name="description" content="Kode Creative Studio — Next-generation web engineering, brand architecture, and digital experiences." />
+  <title>Kode | Creative & Digital Engineering Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700|Montserrat:700|Poppins:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="futuristic-bg" aria-hidden="true">
-    <div class="futuristic-circuit"></div>
-    <div class="futuristic-shape"></div>
-    <div class="futuristic-shape2"></div>
+  <!-- Interactive Light-Mode Tech Background -->
+  <div class="ambient-bg" aria-hidden="true">
+    <canvas id="neural-canvas"></canvas>
+    <div class="cyber-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
   </div>
 
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <a class="logo" href="index.html" aria-label="Kode Creative Studio Home">Kode</a>
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">[</span>KODE<span class="logo-bracket">]</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="services.html">Services</a>
         <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link nav-cta" href="contact.html">Start a Project</a>
       </nav>
-    </div>
-    <div class="hero-art">
-      <div class="hero-circle" aria-hidden="true"></div>
-      <div class="hero-wave" aria-hidden="true"></div>
-      <div class="hero-circle" aria-hidden="true"></div>
     </div>
   </header>
 
-  <main id="main" class="container" role="main">
-    <section class="hero" aria-labelledby="home-heading">
-      <h1 id="home-heading" class="visually-hidden">Kode Creative Studio</h1>
-      <div class="typewriter-wrapper" aria-hidden="false">
-        <span class="typewriter" id="typewriter" aria-live="polite"></span>
+  <main class="container" role="main">
+    <!-- Hero Section -->
+    <section class="hero-section reveal" aria-labelledby="hero-title">
+      <div class="status-badge">
+        <span class="pulse-dot"></span>
+        <span>STUDIO ONLINE // ACCEPTING PROJECTS</span>
       </div>
+
+      <h1 id="hero-title" class="visually-hidden">Kode Creative Studio</h1>
+      <div class="typewriter-wrapper" aria-live="polite">
+        <span id="typewriter" class="typewriter"></span>
+      </div>
+
       <p class="lead">
-        Kode is your all-in-one creative agency specializing in web design, graphic design, websites, ads, edits, logos, and more.
-        <span class="accent">Let us bring your vision to life!</span>
+        We fuse <span class="text-highlight">high-precision engineering</span> with avant-garde visual design to build brands, interfaces, and digital ecosystems that command attention.
       </p>
 
-      <div class="cta">
-        <a href="contact.html" class="cta-button-link"><button class="cta-button">Start Your Project</button></a>
-        <button class="cta-button" id="view-services">View All Services</button>
+      <div class="cta-group">
+        <a href="contact.html" class="btn btn-primary magnetic-btn">
+          <span>Initiate Project</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <button id="view-services" type="button" class="btn btn-secondary magnetic-btn">
+          Explore Capabilities
+        </button>
+      </div>
+
+      <!-- Studio Telemetry Bar -->
+      <div class="metrics-bar">
+        <div class="metric-item">
+          <span class="metric-value">&lt; 24h</span>
+          <span class="metric-label">Response Velocity</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-value">100%</span>
+          <span class="metric-label">Custom Architecture</span>
+        </div>
+        <div class="metric-divider"></div>
+        <div class="metric-item">
+          <span class="metric-value">360°</span>
+          <span class="metric-label">Design to Deployment</span>
+        </div>
       </div>
     </section>
 
-    <section id="services-preview" class="section-card" aria-labelledby="services-preview-heading">
-      <h2 id="services-preview-heading">Our Services</h2>
-      <div class="services" id="services">
-        <article class="service-card" tabindex="0" aria-labelledby="s1">
-          <span class="icon" aria-hidden="true">💻</span>
-          <div class="tooltip">See our stylish & modern web designs!</div>
-          <h3 id="s1">Web Design</h3>
-          <p>Stunning, responsive sites with a creative edge. Tailored for businesses, portfolios, and brands.</p>
+    <!-- Core Capabilities Preview -->
+    <section id="services" class="glass-panel reveal" aria-labelledby="core-services-heading">
+      <div class="section-header">
+        <div>
+          <span class="eyebrow">01 // CORE CAPABILITIES</span>
+          <h2 id="core-services-heading">Engineered for Digital Impact</h2>
+        </div>
+        <a href="services.html" class="text-link">Explore All 6 Modules &rarr;</a>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card tilt-card" data-service="Web Design" tabindex="0">
+          <div class="card-shine"></div>
+          <div class="card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Web Design &amp; UI/UX</h3>
+          <p>UX-first interfaces, responsive design systems, and interactive prototypes built for conversion and clarity.</p>
+          <span class="card-action">Configure Module &rarr;</span>
         </article>
 
-        <article class="service-card" tabindex="0" aria-labelledby="s2">
-          <span class="icon" aria-hidden="true">🎨</span>
-          <div class="tooltip">Ask us about custom artwork!</div>
-          <h3 id="s2">Graphic Design</h3>
-          <p>Eye-catching visuals, posters, and digital art—crafted to make your brand unforgettable.</p>
+        <article class="service-card tilt-card" data-service="Website Builds" tabindex="0">
+          <div class="card-shine"></div>
+          <div class="card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <h3>Full-Stack Builds</h3>
+          <p>High-speed static architectures, headless CMS platforms, e-commerce, and scalable web applications.</p>
+          <span class="card-action">Configure Module &rarr;</span>
         </article>
 
-        <article class="service-card" tabindex="0" aria-labelledby="s3">
-          <span class="icon" aria-hidden="true">🌐</span>
-          <div class="tooltip">Need a website fast? Challenge us!</div>
-          <h3 id="s3">Websites</h3>
-          <p>From one-page starters to dynamic platforms, we build secure and scalable websites.</p>
+        <article class="service-card tilt-card" data-service="Logos & Branding" tabindex="0">
+          <div class="card-shine"></div>
+          <div class="card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          </div>
+          <h3>Brand &amp; Visual Systems</h3>
+          <p>Distinctive logos, graphic design, and cohesive visual identities engineered to scale across every medium.</p>
+          <span class="card-action">Configure Module &rarr;</span>
         </article>
       </div>
-      <p class="more">Explore all services on the <a href="services.html" class="decorative-link">Services page</a>.</p>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <p>&copy; 2025 Kode Creative. All rights reserved.</p>
-      <p class="small">Email: <a href="mailto:kodecreativestudio@gmail.com" class="decorative-link">kodecreativestudio@gmail.com</a></p>
+      <div class="footer-brand">
+        <span class="logo-small">[KODE]</span>
+        <p>Where aesthetic precision meets modern code.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <p class="copyright">&copy; 2026 Kode Creative Studio. All rights reserved.</p>
     </div>
   </footer>
 
   <script src="js/main.js" defer></script>
-  <script>
-    // Initialize page-specific behavior
-    document.addEventListener('DOMContentLoaded', function () {
-      if (location.pathname.endsWith('index.html') || location.pathname === '/' ) {
-        initTypewriter();
-      }
-    });
-  </script>
 </body>
 </html>
