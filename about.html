@@ -3,54 +3,114 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="About Kode Creative Studio — our approach, values and team ethos." />
-  <title>Kode: About</title>
+  <meta name="description" content="About Kode Creative Studio — our approach, values, and execution pipeline." />
+  <title>Kode | About &amp; Architecture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-  <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700|Montserrat:700|Poppins:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="ambient-bg" aria-hidden="true">
+    <canvas id="neural-canvas"></canvas>
+    <div class="cyber-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+
   <header class="site-header" role="banner">
     <div class="header-inner">
-      <a class="logo" href="index.html">Kode</a>
+      <a class="logo" href="index.html">
+        <span class="logo-bracket">[</span>KODE<span class="logo-bracket">]</span>
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
       <nav class="site-nav" role="navigation" aria-label="Main navigation">
         <a class="nav-link" href="index.html">Home</a>
         <a class="nav-link" href="services.html">Services</a>
         <a class="nav-link" href="about.html">About</a>
-        <a class="nav-link" href="contact.html">Contact</a>
+        <a class="nav-link nav-cta" href="contact.html">Start a Project</a>
       </nav>
     </div>
   </header>
 
   <main class="container" role="main">
-    <section class="section-card" aria-labelledby="about-heading">
-      <h1 id="about-heading">About Kode</h1>
-      <p class="lead">Kode brings together the best of tech and art, blending playful, modern aesthetics with cutting-edge digital solutions. We partner with clients of all sizes to craft memorable digital experiences.</p>
+    <section class="glass-panel reveal" aria-labelledby="about-heading">
+      <div class="page-intro">
+        <span class="eyebrow">STUDIO ETHOS // WHO WE ARE</span>
+        <h1 id="about-heading">Where Technology Meets Art</h1>
+        <p class="lead">Kode brings together technical rigor and expressive visual design, blending modern aesthetics with cutting-edge digital engineering to craft memorable brand experiences.</p>
+      </div>
 
       <div class="about-grid">
-        <div class="about-card">
+        <div class="info-card tilt-card">
+          <div class="card-shine"></div>
+          <span class="eyebrow">CORE PRINCIPLES</span>
           <h3>Our Values</h3>
-          <ul class="about-list">
-            <li>Fast turnarounds & creative problem solving</li>
-            <li>Custom solutions for any industry</li>
-            <li>Friendly, collaborative process</li>
+          <ul class="tech-list">
+            <li>Rapid turnarounds paired with creative problem solving</li>
+            <li>Tailored, scalable architectures built for any industry</li>
+            <li>Transparent, collaborative workflow from day one</li>
+            <li>Uncompromising attention to performance and UI detail</li>
           </ul>
         </div>
 
-        <div class="about-card">
-          <h3>How we work</h3>
-          <p>We start with discovery, iterate quickly with prototypes and design reviews, and ship polished, tested deliverables. Communication and transparency are central to every project.</p>
+        <div class="info-card tilt-card">
+          <div class="card-shine"></div>
+          <span class="eyebrow">EXECUTION PIPELINE</span>
+          <h3>How We Work</h3>
+          <div class="pipeline-steps">
+            <div class="step">
+              <span class="step-num">01</span>
+              <div>
+                <strong>Discovery &amp; Strategy</strong>
+                <p>We map your goals, audience, and technical requirements into a clear blueprint.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-num">02</span>
+              <div>
+                <strong>Rapid Prototyping</strong>
+                <p>Iterative design reviews and interactive previews ensure alignment before full build.</p>
+              </div>
+            </div>
+            <div class="step">
+              <span class="step-num">03</span>
+              <div>
+                <strong>Deployment &amp; Scale</strong>
+                <p>We ship polished, battle-tested deliverables ready for real-world traffic.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="cta" style="margin-top:1.25rem;">
-        <a href="contact.html" class="cta-button-link"><button class="cta-button">Contact Us</button></a>
+      <div class="cta-group" style="margin-top: 2.5rem;">
+        <a href="contact.html" class="btn btn-primary magnetic-btn">
+          <span>Collaborate With Us</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </a>
+        <a href="services.html" class="btn btn-secondary magnetic-btn">Explore Services</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
-      <p>&copy; 2025 Kode Creative. All rights reserved.</p>
+      <div class="footer-brand">
+        <span class="logo-small">[KODE]</span>
+        <p>Where aesthetic precision meets modern code.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <p class="copyright">&copy; 2026 Kode Creative Studio. All rights reserved.</p>
     </div>
   </footer>
 
